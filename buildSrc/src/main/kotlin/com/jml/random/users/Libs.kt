@@ -38,14 +38,6 @@ object Libs {
         const val OKHHTP_LOGGER = "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OKHTTP}"
     }
 
-    object Dagger {
-        const val DAGGER = "com.google.dagger:dagger:${Versions.Dagger.VERSION}"
-        const val COMPILER = "com.google.dagger:dagger-compiler:${Versions.Dagger.VERSION}"
-        const val ANDROID = "com.google.dagger:dagger-android:${Versions.Dagger.VERSION}"
-        const val ANDROID_SUPPORT = "com.google.dagger:dagger-android-support:${Versions.Dagger.VERSION}"
-        const val ANNOTATION_PROCESSOR = "com.google.dagger:dagger-android-processor:${Versions.Dagger.VERSION}"
-    }
-
     object Rx {
         const val JAVA = "io.reactivex.rxjava2:rxjava:${Versions.Rx.JAVA}"
         const val ANDROID = "io.reactivex.rxjava2:rxandroid:${Versions.Rx.ANDROID}"

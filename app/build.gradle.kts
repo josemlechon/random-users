@@ -20,7 +20,6 @@ android {
         applicationId = "com.jml.random.users"
         versionCode = 1
         versionName = "1.0"
-
     }
 
     buildTypes {
@@ -31,6 +30,7 @@ android {
     }
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
+    sourceSets["test"].java.srcDir("src/test/kotlin")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -50,16 +50,10 @@ android {
 
 dependencies {
 
-    implementation(project(":common"))
-    implementation(project(":network"))
+    implementation(project(Config.ProjectModules.COMMON))
 
     implementation(kotlin("stdlib-jdk8"))
 
     testImplementation(Libs.Test.JUNIT)
 
-}
-
-repositories {
-    mavenCentral()
-    maven("http://repository.jetbrains.com/all")
 }

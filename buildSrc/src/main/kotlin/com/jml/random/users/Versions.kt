@@ -4,7 +4,7 @@ object Versions {
 
     const val BUILD_TOOLS_VERSION = "3.4.0"
 
-    const val KOTLIN = "1.3.11"
+    const val KOTLIN = "1.3.31"
 
     object UI {
         const val RECYCLER = "1.0.0"
@@ -16,9 +16,9 @@ object Versions {
     }
 
     object Network {
-        const val GSON = "2.8.0"
-        const val RETROFIT = "2.3.0"
-        const val OKHTTP = "3.8.0"
+        const val GSON = "2.8.2"
+        const val RETROFIT = "2.4.0"
+        const val OKHTTP = "3.10.0"
     }
 
     object ViewModel{

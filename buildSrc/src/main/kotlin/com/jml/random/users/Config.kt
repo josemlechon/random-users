@@ -19,6 +19,7 @@ object Config {
 
     object ProjectModules {
         const val COMMON = ":common"
+        const val NETWORK = ":network"
     }
 
 }
