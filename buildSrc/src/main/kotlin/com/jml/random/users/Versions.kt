@@ -52,7 +52,7 @@ object Versions {
     }
 
     object Utils {
-        const val GLIDE_VERSION = "4.8.0"
+        const val GLIDE_VERSION = "4.9.0"
         const val TIMBER_VERSION = "4.7.1"
         const val DATE_VERSION = "1.2.0"
     }

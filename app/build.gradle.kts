@@ -60,7 +60,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
     kapt(Libs.Persistence.ROOM_KAPT)
-
+    kapt(Libs.Utils.GLIDE_COMPILER)
 
     testImplementation(Libs.Test.JUNIT)
 

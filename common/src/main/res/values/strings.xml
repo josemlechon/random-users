@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">common</string>
+
+    <string name="t_example_short">This is an example</string>
+    <string name="t_example_medium">This is another example a little bit longer than the previous one</string>
+    <string name="t_example_button">ACTION BUTTON</string>
+
+
+    <string name="error_generic">Ooopsss!! something went wrong</string>
+    <string name="error_no_internet">There is no internet connection</string>
+
+
+    <string name="flight_info_direct">Direct</string>
+    <string name="flight_info_stops">Stops %d</string>
+    <string name="flight_info_time">%s - %s</string>
+    <string name="flight_info_inbound_outbound_carrier">%s-%s, %s</string>
+    <string name="flight_info_agent">via %s</string>
+
+    <string name="flight_search_sort">SORT &amp; FILTER</string>
+
+    <string name="action_ok">OK</string>
+    <string name="action_retry">RETRY</string>
+
 </resources>

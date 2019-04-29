@@ -5,12 +5,8 @@ import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Color
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Handler
-import android.text.Html
-import android.text.Html.FROM_HTML_MODE_LEGACY
 import android.util.DisplayMetrics
-import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -20,15 +16,11 @@ import android.widget.CheckedTextView
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
-import androidx.annotation.LayoutRes
-import androidx.annotation.MenuRes
-import androidx.annotation.StringRes
+import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.jml.random.users.common.view.BaseActivity
 import com.jml.random.users.common.view.BaseFragment
 
@@ -58,7 +50,8 @@ fun View.setClickListener(body: () -> Unit) {
 
         Handler().postDelayed(
             { it.isEnabled = true },
-            100)
+            100
+        )
     }
 }
 
@@ -194,59 +187,25 @@ fun TextView.setString(@StringRes id: Int, vararg formatArgs: Any?) {
 /**
  * Load an url image into the ImageView
  */
-/*
-fun ImageView.loadFromUrl(url: String?, crop: Boolean = false, @DrawableRes pinHolder: Int? = null) {
-    url?.takeIf { !url.isNullOrEmpty() }
-        ?.let {
-            val requestCreator = Picasso.get().load(url)
 
-            if (pinHolder != null) {
-                requestCreator.placeholder(pinHolder)
-                requestCreator.error(pinHolder)
-            }
-            if (crop) {
-                requestCreator
-                    .fit()
-                    .centerInside()
-            }
+fun ImageView.loadCircleFromUrl(url: String, crop: Boolean = false, @DrawableRes pinHolder: Int? = null) {
+    url.let {
+        val requestCreator = Glide.with(this).load(url)
 
-            requestCreator.into(this)
+        pinHolder?.let {
+            requestCreator
+                .placeholder(it)
+                .error(it)
         }
-}
 
-fun ImageView.loadRoundedFromUrl(url: String?, @DrawableRes placeholder: Int? = null) {
-    url?.takeIf { !url.isNullOrEmpty() }
-        ?.let {
-            Picasso.get()
-                .load(url)
-                .let {
-                    if (placeholder != null) {
-                        it.placeholder(placeholder)
-                    } else {
-                        it
-                    }
-                }
-        }?.transform(CircleTransform())
-        ?.into(this)
-}
-*/
-fun ViewPager.setCarouselEffect(padding: Int, margin: Int, pageTransformer: ViewPager.PageTransformer) {
-    clipToPadding = false
-    pageMargin = margin
-    setPadding(padding, 0, padding, 0)
-    setPageTransformer(false, pageTransformer)
+        if (crop) requestCreator.circleCrop()
+
+        requestCreator.into(this)
+    }
 }
 
 fun String.parseColor(): Int {
     return Color.parseColor(this)
-}
-
-fun String.parseHtml(): String {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-        Html.fromHtml(this, FROM_HTML_MODE_LEGACY).toString()
-    } else {
-        Html.fromHtml(this).toString()
-    }
 }
 
 fun TextView.getString(): String {
@@ -258,16 +217,5 @@ fun TextView.getInt(): Int {
         text.toString().toInt()
     } catch (ex: Exception) {
         0
-    }
-}
-
-/**
- * Explanation why https://github.com/square/picasso/issues/609 by Jake Warthon
- */
-fun String?.validPicassoUrl(): String? {
-    return when {
-        isNullOrEmpty() -> null
-        !Patterns.WEB_URL.matcher(this).matches() -> null
-        else -> this
     }
 }
