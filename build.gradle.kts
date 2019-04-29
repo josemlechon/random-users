@@ -1,5 +1,3 @@
-import com.jml.random.users.Libs
-
 buildscript {
     repositories {
         jcenter()
@@ -17,6 +15,8 @@ allprojects {
         google()
         jcenter()
 
+        mavenCentral()
+        maven("http://repository.jetbrains.com/all")
     }
 }
 
