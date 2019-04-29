@@ -1,12 +1,14 @@
 import com.jml.random.users.Config
 import com.jml.random.users.Libs
+import com.jml.random.users.Versions
 
 
 //TODO READ https://kotlinlang.org/docs/reference/using-gradle.html
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id("com.android.application")// version Versions.BUILD_TOOLS_VERSION
+    kotlin("android")// version Versions.KOTLIN
     kotlin("android.extensions")
+    kotlin("kapt")// version Versions.KOTLIN
 }
 
 android {
@@ -20,6 +22,9 @@ android {
         applicationId = "com.jml.random.users"
         versionCode = 1
         versionName = "1.0"
+
+
+        buildConfigField("String", "SERVER_BASE_URL", "\"https://randomuser.me\"")
     }
 
     buildTypes {
@@ -53,6 +58,9 @@ dependencies {
     implementation(project(Config.ProjectModules.COMMON))
 
     implementation(kotlin("stdlib-jdk8"))
+
+    kapt(Libs.Persistence.ROOM_KAPT)
+
 
     testImplementation(Libs.Test.JUNIT)
 

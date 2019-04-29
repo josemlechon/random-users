@@ -3,27 +3,24 @@ package com.jml.random.users.network.handler
 import com.jml.random.users.network.exceptions.CredentialsException
 import com.jml.random.users.network.exceptions.NetworkException
 import com.jml.random.users.network.exceptions.UnknownHttpException
-import io.reactivex.Completable
-import io.reactivex.CompletableTransformer
-import io.reactivex.Flowable
-import io.reactivex.FlowableTransformer
-import io.reactivex.Single
-import io.reactivex.SingleTransformer
+import io.reactivex.*
+
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.UnknownHostException
 
 object NetworkErrorHandler {
 
-    fun <T> parseHttpErrors(): FlowableTransformer<T, T> {
+    fun <T> parseHttpErrors(): ObservableTransformer<T, T> {
 
-        return FlowableTransformer { transformer ->
-            transformer
-                .onErrorResumeNext { throwable: Throwable ->
-                    Flowable.error(handleError(throwable))
-                }
+        return ObservableTransformer { transformer ->
+            transformer.onErrorResumeNext { throwable: Throwable ->
+                Observable.error(handleError(throwable))
+            }
         }
     }
+
+
 
     fun <T> parseSingleHttpErrors(): SingleTransformer<T, T> {
 

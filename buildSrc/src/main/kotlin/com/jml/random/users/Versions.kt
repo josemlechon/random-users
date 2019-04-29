@@ -10,7 +10,7 @@ object Versions {
         const val RECYCLER = "1.0.0"
 
         const val CARD = "1.0.0"
-        const val CONSTRAINT = "1.1.2"
+        const val CONSTRAINT = "1.1.3"
         const val DESIGN = "1.0.0"
         const val APPCOMPAT = "1.0.0"
     }
@@ -21,37 +21,39 @@ object Versions {
         const val OKHTTP = "3.10.0"
     }
 
-    object ViewModel{
+    object ViewModel {
         const val VIEWMODEL = "2.0.0"
-
-
     }
 
-    object Extensions{
+    object Extensions {
         const val KTX = "1.0.0"
-        const val VIEWMODEL= "2.0.0"
-        const val LIFE_CYCLE_VIMODEL_KTX  = "2.0.0"
+        const val VIEWMODEL = "2.0.0"
+        const val LIFE_CYCLE_VIMODEL_KTX = "2.0.0"
     }
 
+    object Persistence {
+        const val ROOM = "2.1.0-alpha03"
+        const val PAGINATION = "2.1.0-rc01"
+    }
 
-    object Dagger{
-        const val VERSION = "2.16"
+    object DI {
+        const val KOIN = "2.0.0-rc-2"
     }
 
     object Rx {
-        const val KOTLIN= "2.3.0"
+        const val KOTLIN = "2.3.0"
         const val ANDROID = "2.1.1"
         const val JAVA = "2.2.8"
     }
 
     object Test {
         const val JUNIT = "4.12"
-        const val MOCKITO =  "2.18.0"
+        const val MOCKITO = "2.18.0"
     }
 
     object Utils {
         const val GLIDE_VERSION = "4.8.0"
         const val TIMBER_VERSION = "4.7.1"
-        const val DATE_VERSION ="1.2.0"
+        const val DATE_VERSION = "1.2.0"
     }
 }
