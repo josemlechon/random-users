@@ -1,9 +1,14 @@
 import com.jml.random.users.Libs
 import com.jml.random.users.Config
 
+
 plugins {
     id("com.android.library")
-    kotlin("android")
+}
+
+apply {
+    plugin("kotlin-android")
+    plugin("kotlin-android-extensions")
 }
 
 android {
@@ -24,13 +29,14 @@ android {
 }
 
 dependencies {
-
-    implementation(project(Config.ProjectModules.COMMON))
-
+    implementation( Libs.Config.KOTLIN)
     api(Libs.Network.GSON)
     api(Libs.Network.RETROFIT)
     api(Libs.Network.RETROFIT_RX_ADAPTER)
     api(Libs.Network.RETROFIT_GSON_CONVERTER)
     api(Libs.Network.OKHTTP)
     api(Libs.Network.OKHHTP_LOGGER)
+}
+repositories {
+    mavenCentral()
 }

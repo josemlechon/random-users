@@ -1,10 +1,12 @@
 import com.jml.random.users.Config
 import com.jml.random.users.Libs
+import com.jml.random.users.Versions
 
 plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("android.extensions")
+    kotlin("kapt") //version Versions.KOTLIN
 }
 
 android {
@@ -37,9 +39,9 @@ dependencies {
     api("androidx.appcompat:appcompat:1.0.2")
 
     //viewmodel
-    api("androidx.lifecycle:lifecycle-viewmodel:2.0.0")
-    api("androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0")
-    api("androidx.lifecycle:lifecycle-extensions:2.0.0")
+    api(Libs.ViewModel.VIEWMODEL)
+    api(Libs.ViewModel.LIFECICLY_VIEMODEL_KTX)
+    api(Libs.ViewModel.LIFECYCLE_EXTENSIONS)
 
     //Network
     api("com.google.code.gson:gson:2.8.2")
@@ -49,12 +51,22 @@ dependencies {
     api("com.squareup.okhttp3:okhttp:3.10.0")
     api("com.squareup.okhttp3:logging-interceptor:3.10.0")
 
+    //DI
+    api(Libs.DI.KOIN_ANDROID)
+    api(Libs.DI.KOIN_LIFECYCLE)
+    api(Libs.DI.KOIN_VIEWMODEL)
+
     //RX
     api(Libs.Config.KOTLIN)
     api(Libs.Rx.JAVA)
     api(Libs.Rx.ANDROID)
     api(Libs.Rx.KOTLIN)
 
+    //ROOM
+    api(Libs.Persistence.ROOM)
+    api(Libs.Persistence.ROOM_RX)
+    kapt(Libs.Persistence.ROOM_KAPT)
+    api(Libs.Persistence.PAGINATION)
 
     testImplementation("junit:junit:4.12")
     androidTestImplementation("com.android.support.test:runner:1.0.2")
