@@ -1,5 +1,4 @@
 package com.jml.random.users
-
 object Config {
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.BUILD_TOOLS_VERSION}"

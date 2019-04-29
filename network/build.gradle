@@ -1,10 +1,10 @@
 apply plugin: 'com.android.library'
 
-apply from: '../android_commons.gradle'
+//apply from: '../android_commons.gradle'
 
 android {
 
-
+    compileSdkVersion  28
     defaultConfig {
         versionCode 1
         versionName "1.0"

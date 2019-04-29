@@ -1,3 +1,5 @@
+import com.jml.random.users.Libs
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -12,7 +14,6 @@ android {
         applicationId "com.jml.random.users"
         versionCode 1
         versionName "1.0"
-
     }
     buildTypes {
         release {
@@ -24,10 +25,11 @@ android {
 
 dependencies {
 
-    implementation project(':common')
+  //  implementation project(':common')
+    implementation project(':network')
 
 
+    api com.jml.random.users.Libs.Network.GSON
     testImplementation 'junit:junit:4.12'
-
-
+    
 }

@@ -2,8 +2,12 @@ package com.jml.random.users
 
 object Libs {
 
+    const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.BUILD_TOOLS_VERSION}"
+    const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.KOTLIN}"
+
+
     object Config {
-        const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.KOTLIN}"
+        const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.KOTLIN}"
     }
 
     object UI {
@@ -49,7 +53,7 @@ object Libs {
     }
 
     object Test {
-        const val junit: String = "junit:junit:${Versions.Test.JUNIT}"
+        const val JUNIT: String = "junit:junit:${Versions.Test.JUNIT}"
         const val mockito = "org.mockito:mockito-core:${Versions.Test.MOCKITO}"
         const val mockitoAndroid = "org.mockito:mockito-android:${Versions.Test.MOCKITO}"
         const val mockitoInline = "org.mockito:mockito-inline:${Versions.Test.MOCKITO}"
