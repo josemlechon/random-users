@@ -2,11 +2,11 @@ package com.jml.random.users.di
 
 import androidx.room.Room
 import com.jml.random.users.app.AppDataBase
-import com.jml.random.users.home.vm.HomeViewModel
+import com.jml.random.users.home.view.vm.HomeViewModel
 import com.jml.random.users.users.data.datasource.UserRemoteDataSource
 import com.jml.random.users.users.data.repository.UserRepository
 import com.jml.random.users.users.data.repository.UserRepositoryImpl
-import com.jml.random.users.users.domain.usecases.GetUser
+import com.jml.random.users.home.domain.GetUsers
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -22,7 +22,7 @@ val appModule = module {
 
 
 val useCaseModule = module {
-    factory { GetUser(get()) }
+    factory { GetUsers(get()) }
 }
 
 val repositoryModule = module {

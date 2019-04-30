@@ -11,13 +11,13 @@ data class UserEntity(
     @PrimaryKey
     @ColumnInfo(name = ID) val uuid: String,
     @ColumnInfo(name = "username") val username: String,
-    @ColumnInfo(name = "name") @Embedded val name: UserNameEntity,
+    @Embedded val name: UserNameEntity, //@ColumnInfo(name = "name")
     @ColumnInfo(name = "email") val email: String,
     @ColumnInfo(name = "phone") val phone: String?,
-    @ColumnInfo(name = "photos") @Embedded val photo: UserPhotoEntity,
-    @ColumnInfo(name = "registered") @Embedded val registered: String,
+    @Embedded val photo: UserPhotoEntity, //@ColumnInfo(name = "photos")
+    @Embedded val registered: String, //@ColumnInfo(name = "registered")
     @ColumnInfo(name = "gender") val gender: String,
-    @ColumnInfo(name = "location") @Embedded val location: UserLocationEntity
+    @Embedded val location: UserLocationEntity //@ColumnInfo(name = "location")
 ) {
 
     companion object {

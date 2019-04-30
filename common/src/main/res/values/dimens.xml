@@ -10,4 +10,6 @@
     <dimen name="base_between_items">10dp</dimen>
 
     <dimen name="result_way_icon_size">50dp</dimen>
+
+    <dimen name="edit_text_single_line">50dp</dimen>
 </resources>

@@ -1,4 +1,4 @@
-package com.jml.random.users.common.vm
+package com.jml.random.users.common.view.vm
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.LiveData

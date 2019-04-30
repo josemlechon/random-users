@@ -49,7 +49,8 @@ android {
         "META-INF/NOTICE.txt",
         "META-INF/NOTICE",
         "META-INF/ASL2.0",
-        "oMETA-INF/MANIFEST.MF"
+        "META-INF/MANIFEST.MF"
+
     )
 }
 

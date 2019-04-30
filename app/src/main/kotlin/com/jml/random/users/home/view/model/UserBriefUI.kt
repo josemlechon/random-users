@@ -1,6 +1,6 @@
-package com.jml.random.users.users.domain.model
+package com.jml.random.users.home.view.model
 
-data class UserBrief(
+data class UserBriefUI(
     val id : String,
     val fullName: String,
     val email: String,

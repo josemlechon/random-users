@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin_x2"
@@ -29,8 +28,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/home_user_head_image"
                 app:layout_constraintStart_toStartOf="@+id/home_user_start_guide"
                 app:layout_constraintEnd_toEndOf="@id/home_user_end_guide"
-                android:layout_marginTop="@dimen/base_margin"
-                tools:text="Estas inscrit"/>
+                android:layout_marginTop="@dimen/base_margin_x2"
+                style="@style/LabelSemiBold.Title"/>
 
         <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/home_user_email_text"
@@ -39,7 +38,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/home_user_full_name_image"
                 app:layout_constraintStart_toStartOf="@+id/home_user_start_guide"
                 app:layout_constraintEnd_toEndOf="@+id/home_user_end_guide"
-                android:layout_marginTop="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_between_items"
+                style="@style/Label.Section"
         />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -49,7 +49,8 @@
                 app:layout_constraintTop_toBottomOf="@id/home_user_email_text"
                 app:layout_constraintStart_toStartOf="@id/home_user_start_guide"
                 app:layout_constraintEnd_toEndOf="@id/home_user_end_guide"
-                android:layout_marginTop="@dimen/base_margin"
+                android:layout_marginTop="@dimen/base_between_items"
+                style="@style/Label.Section"
         />
 
         <androidx.constraintlayout.widget.Guideline

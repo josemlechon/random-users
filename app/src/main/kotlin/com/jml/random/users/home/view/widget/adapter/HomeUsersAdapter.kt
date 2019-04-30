@@ -7,10 +7,10 @@ import com.jml.random.users.common.extensions.inflate
 import com.jml.random.users.common.extensions.loadCircleFromUrl
 import com.jml.random.users.common.extensions.setClickListener
 import com.jml.random.users.common.view.widget.adapter.BaseRecyclerAdapter
-import com.jml.random.users.users.domain.model.UserBrief
+import com.jml.random.users.home.view.model.UserBriefUI
 import kotlinx.android.synthetic.main.item_home_user.view.*
 
-class HomeUsersAdapter : BaseRecyclerAdapter<HomeUsersAdapter.ViewHolder, UserBrief>() {
+class HomeUsersAdapter : BaseRecyclerAdapter<HomeUsersAdapter.ViewHolder, UserBriefUI>() {
 
     var doOnItemClick: ((position: Int, id: String) -> Unit)? = null
 
@@ -18,9 +18,9 @@ class HomeUsersAdapter : BaseRecyclerAdapter<HomeUsersAdapter.ViewHolder, UserBr
         return ViewHolder(parent.inflate(R.layout.item_home_user))
     }
 
-    inner class ViewHolder(itemView: View) : BaseRecyclerAdapter.BaseViewHolder<UserBrief>(itemView) {
+    inner class ViewHolder(itemView: View) : BaseRecyclerAdapter.BaseViewHolder<UserBriefUI>(itemView) {
 
-        override fun bind(item: UserBrief) {
+        override fun bind(item: UserBriefUI) {
 
             itemView.apply {
                 home_user_full_name_image.text = item.fullName.capitalize()
