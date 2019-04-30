@@ -13,9 +13,9 @@ data class UserEntity(
     @ColumnInfo(name = "username") val username: String,
     @Embedded val name: UserNameEntity, //@ColumnInfo(name = "name")
     @ColumnInfo(name = "email") val email: String,
-    @ColumnInfo(name = "phone") val phone: String?,
+    @ColumnInfo(name = "phone") val phone: String,
     @Embedded val photo: UserPhotoEntity, //@ColumnInfo(name = "photos")
-    @Embedded val registered: String, //@ColumnInfo(name = "registered")
+    @ColumnInfo(name = "registered") val registered: String?, //@ColumnInfo(name = "registered")
     @ColumnInfo(name = "gender") val gender: String,
     @Embedded val location: UserLocationEntity //@ColumnInfo(name = "location")
 ) {

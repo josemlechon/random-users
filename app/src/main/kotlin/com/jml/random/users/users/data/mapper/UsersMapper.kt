@@ -45,9 +45,9 @@ object UsersMapper {
 
     private fun mapFromPhotoResponseToEntity(res: PhotoResponse): UserPhotoEntity {
         return UserPhotoEntity(
-            large = res.large,
-            medium = res.medium,
-            thumbnail = res.thumbnail
+            large = res.large ?: "",
+            medium = res.medium ?: "",
+            thumbnail = res.thumbnail ?: ""
         )
     }
 
@@ -70,9 +70,32 @@ object UsersMapper {
 
     private fun mapFromPhotoResponseToModel(res: PhotoResponse): UserPhotos {
         return UserPhotos(
-            large = res.large,
-            medium = res.medium,
-            thumbnail = res.thumbnail
+            large = res.large ?: "",
+            medium = res.medium ?: "",
+            thumbnail = res.thumbnail ?: ""
+        )
+    }
+
+
+    fun mapFromUserEntityToModel(entity: UserEntity): User {
+
+        return User(
+            id = entity.uuid,
+            titleName = entity.name.title,
+            firstName = entity.name.first,
+            lastName = entity.name.last,
+            email = entity.email,
+            phone = entity.phone,
+            pictures = mapFromPhotoEntityToModel(entity.photo)
+        )
+    }
+
+
+    private fun mapFromPhotoEntityToModel(entity: UserPhotoEntity): UserPhotos {
+        return UserPhotos(
+            large = entity.large,
+            medium = entity.medium,
+            thumbnail = entity.thumbnail
         )
     }
 }

@@ -67,6 +67,7 @@ dependencies {
     api(Libs.Persistence.ROOM_RX)
     kapt(Libs.Persistence.ROOM_KAPT)
     api(Libs.Persistence.PAGINATION)
+    api(Libs.Persistence.PAGINATION_RX)
 
     //UTILS
     api (Libs.Utils.GLIDE)

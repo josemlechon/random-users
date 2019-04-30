@@ -12,7 +12,7 @@ object UserUIMapper {
                 fullName = user.getFullName(),
                 email = user.email,
                 phone = user.phone,
-                thumbnail = user.pictures.thumbnail
+                picture = user.pictures.medium
             )
         }
     }

@@ -4,6 +4,6 @@ data class UserBriefUI(
     val id : String,
     val fullName: String,
     val email: String,
-    val thumbnail: String,
+    val picture: String,
     val phone: String
 )

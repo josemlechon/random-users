@@ -1,25 +1,26 @@
 package com.jml.random.users.home.view
 
 import android.os.Bundle
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jml.random.users.R
-import com.jml.random.users.common.domain.model.PaginationScroll
 import com.jml.random.users.common.exceptions.ErrorType
 import com.jml.random.users.common.extensions.observeNonNull
 import com.jml.random.users.common.extensions.showErrorDialog
 import com.jml.random.users.common.extensions.visibleGone
 import com.jml.random.users.common.view.BaseActivity
-import com.jml.random.users.common.view.widget.adapter.PaginationScrollListener
-import com.jml.random.users.home.view.widget.adapter.HomeUsersAdapter
+
 import com.jml.random.users.home.view.vm.HomeViewModel
 import com.jml.random.users.home.view.vm.state.HomeState
 import com.jml.random.users.home.view.model.UserBriefUI
+import com.jml.random.users.home.view.widget.adapter.HomePagedListAdapter
+import com.jml.random.users.users.domain.model.User
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : BaseActivity() {
 
-    val viewModel: HomeViewModel by viewModel()
+    private val viewModel: HomeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,18 +34,12 @@ class HomeActivity : BaseActivity() {
 
         val linearLayout = LinearLayoutManager(this)
 
-        val paginationListener = object : PaginationScrollListener(linearLayout) {
-            override fun loadMoreItems() = viewModel.getMoreUsers()
-            override fun getPagination(): PaginationScroll = viewModel.pagination
-        }
-
         home_users_recycler.apply {
-            adapter = HomeUsersAdapter().apply {
+            adapter = HomePagedListAdapter().apply {
                 doOnItemClick = (::onItemSelected)
             }
             setHasFixedSize(true)
             layoutManager = linearLayout
-            addOnScrollListener(paginationListener)
         }
 
         home_users_refresh.setOnRefreshListener(::onRefreshListener)
@@ -66,6 +61,7 @@ class HomeActivity : BaseActivity() {
 
     private fun handleHomeState(state: HomeState) {
         when (state) {
+            is HomeState.PaggedData -> showPagedData(state.paged)
             is HomeState.Data -> showUsersData(state.users)
             is HomeState.MoreData -> showMoreUsersData(state.users)
             is HomeState.RefreshUsers -> showNewUsersRefreshed(state.users)
@@ -84,17 +80,24 @@ class HomeActivity : BaseActivity() {
         showUsersData(users)
     }
 
-    private fun showUsersData(users: List<UserBriefUI>) {
-        showFilterEmptyMessage(users.isNotEmpty())
+    private fun showPagedData(paged: PagedList<User>) {
 
-        (home_users_recycler.adapter as HomeUsersAdapter).setData(users)
+
+        (home_users_recycler.adapter as HomePagedListAdapter).submitList(paged)
+
+    }
+
+    private fun showUsersData(users: List<UserBriefUI>) {
+//        showFilterEmptyMessage(users.isNotEmpty())
+
+        //       (home_users_recycler.adapter as HomeUsersAdapter).setData(users)
     }
 
     private fun showMoreUsersData(users: List<UserBriefUI>) {
-        (home_users_recycler.adapter as HomeUsersAdapter).addData(users)
+        //     (home_users_recycler.adapter as HomeUsersAdapter).addData(users)
     }
 
-    private fun showFilterEmptyMessage(show : Boolean ){
+    private fun showFilterEmptyMessage(show: Boolean) {
         home_users_no_data_messages.visibleGone(show)
     }
 
