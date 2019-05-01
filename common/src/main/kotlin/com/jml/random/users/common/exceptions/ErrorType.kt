@@ -1,5 +1,7 @@
 package com.jml.random.users.common.exceptions
 
+import com.jml.random.users.network.exceptions.NetworkException
+
 enum class ErrorType {
     GENERIC,
     NETWORK;

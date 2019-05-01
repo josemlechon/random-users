@@ -54,6 +54,7 @@ object Libs {
         const val ROOM_RX = "androidx.room:room-rxjava2:${Versions.Persistence.ROOM}"
         const val ROOM_KAPT = "androidx.room:room-compiler:${Versions.Persistence.ROOM}"
         const val PAGINATION = "androidx.paging:paging-runtime-ktx:${Versions.Persistence.PAGINATION}"
+        const val PAGINATION_RX = "androidx.paging:paging-rxjava2:${Versions.Persistence.PAGINATION}"
     }
 
     object Utils {

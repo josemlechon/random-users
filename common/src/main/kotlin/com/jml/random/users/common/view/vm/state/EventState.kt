@@ -1,4 +1,4 @@
-package  com.jml.random.users.common.vm.state
+package  com.jml.random.users.common.view.vm.state
 
 import com.jml.random.users.common.exceptions.ErrorType
 

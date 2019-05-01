@@ -2,6 +2,7 @@ package com.jml.random.users.app
 
 import android.app.Application
 import com.jml.random.users.di.appModule
+import com.jml.random.users.di.networkModule
 import com.jml.random.users.di.repositoryModule
 import com.jml.random.users.di.useCaseModule
 import org.koin.android.ext.koin.androidContext
@@ -26,7 +27,8 @@ class RandomApplication : Application() {
             modules(
                 appModule,
                 useCaseModule,
-                repositoryModule
+                repositoryModule,
+                networkModule
             )
         }
     }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/no_data_messages_title_text"
+        style="@style/LabelSemiBold.Title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/no_data_messages_guideline"
+        app:layout_constraintStart_toStartOf="@id/no_data_messages_start_guide"
+        app:layout_constraintEnd_toEndOf="@id/no_data_messages_end_guide"
+        android:layout_marginBottom="@dimen/base_margin"
+        tools:text="there is no users  with .... " />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/no_data_messages_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.4"
+        android:orientation="horizontal" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/no_data_messages_description_text"
+        style="@style/Label.Section"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/base_margin"
+        app:layout_constraintTop_toBottomOf="@+id/no_data_messages_guideline"
+        app:layout_constraintStart_toStartOf="@id/no_data_messages_start_guide"
+        app:layout_constraintEnd_toEndOf="@id/no_data_messages_end_guide"
+        tools:text="Please restart your search" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/no_data_messages_start_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="@dimen/base_margin_x2"
+        android:orientation="vertical" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/no_data_messages_end_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="@dimen/base_margin_x2"
+        android:orientation="vertical" />
+</merge>

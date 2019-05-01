@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="base_elevation">5dp</dimen>
+
+    <dimen name="base_margin_min">4dp</dimen>
+    <dimen name="base_margin">8dp</dimen>
+    <dimen name="base_margin_x2">16dp</dimen>
+
+    <dimen name="base_between_items">10dp</dimen>
+
+    <dimen name="result_way_icon_size">50dp</dimen>
+
+    <dimen name="edit_text_single_line">50dp</dimen>
+</resources>

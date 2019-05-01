@@ -9,14 +9,24 @@ class UserRemoteDataSource constructor(
     private val usersApi: RandomUsersApi
 ) {
 
-    fun requestUsers(page: Int, results: Int): Single<BaseResponse<List<UserResponse>>> {
+    companion object {
+        private const val NUM_ITEMS_PAGE = 10
+    }
 
+    fun requestInitialUsers(): Single<BaseResponse<List<UserResponse>>> {
         return usersApi.getUsers(
-            page = page,
-            results = results
+            results = NUM_ITEMS_PAGE
         )
             .compose(NetworkErrorHandler.parseSingleHttpErrors())
     }
 
+    fun requestUsers(page: Int, results: Int, seed: String): Single<BaseResponse<List<UserResponse>>> {
 
+        return usersApi.getUsers(
+            page = page,
+            results = results,
+            seed = seed
+        )
+            .compose(NetworkErrorHandler.parseSingleHttpErrors())
+    }
 }

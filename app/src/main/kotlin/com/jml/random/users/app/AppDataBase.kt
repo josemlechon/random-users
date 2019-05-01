@@ -2,11 +2,16 @@ package com.jml.random.users.app
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.jml.random.users.users.data.datasource.PagesDAODataSource
 import com.jml.random.users.users.data.datasource.UserDAODataSource
-import com.jml.random.users.users.data.model.db.UserEntity
+import com.jml.random.users.users.data.model.db.pages.PageInfoEntity
+import com.jml.random.users.users.data.model.db.user.UserEntity
 
 @Database(
-    entities = [UserEntity::class],
+    entities = [
+        UserEntity::class,
+        PageInfoEntity::class
+    ],
     version = 1,
     exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
@@ -17,4 +22,5 @@ abstract class AppDataBase : RoomDatabase() {
 
 
     abstract fun userDao(): UserDAODataSource
+    abstract fun pagesDao(): PagesDAODataSource
 }

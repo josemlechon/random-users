@@ -5,18 +5,12 @@ You are working for a company showing random users information (RandomUser Inc.)
 
 Your task for this code test is to design an Android application with these requirements:
 
-- Download a list of random users from http://randomuser.me/ API.
+
+TASK:
+
 - Be careful, some users can be duplicated. You should take this into account and do not show duplicated users. If Random User API returns the same user more than once you have to store just one user inside your system.
-- Show a list of random users with this information:
-    User name and surname.
-    User email.
-    User picture.
-    User phone.
 
-- Add a button or any similar infinite scroll mechanism to retrieve more users and add them to your current users list.
 - Add a button to each cell or a similar interaction to delete users. If you press that button your user will  not be shown anymore in your user list. Even if the user is part of a new server side response.
-
-- Your user interface should contain a textbox to filter users by name, surname or email. Once the user stop typing, your list will be updated with users that matches with the search term.
 
 - If you press the cell you have to show another view with the user detailed information:
    - User gender.
@@ -25,6 +19,18 @@ Your task for this code test is to design an Android application with these requ
    - Registered date.
    - User email.
    - User picture.
+
+
+TASK DONE:
+ - Download a list of random users from http://randomuser.me/ API.
+ - Show a list of random users with this information:
+     User name and surname.
+     User email.
+     User picture.
+     User phone.
+
+- Add a button or any similar infinite scroll mechanism to retrieve more users and add them to your current users list.
+- Your user interface should contain a textbox to filter users by name, surname or email. Once the user stop typing, your list will be updated with users that matches with the search term.
 
 
 The user information should be persistent across application sessions.

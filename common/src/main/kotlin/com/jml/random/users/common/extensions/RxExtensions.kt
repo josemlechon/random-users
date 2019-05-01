@@ -15,7 +15,7 @@ fun <T> Maybe<T>.subscribeOnIO() =
     this.subscribeOn(Schedulers.io())
 
 fun <T> Maybe<T>.subscribeOnComputation() =
-    this.observeOn(Schedulers.io())
+    this.subscribeOn(Schedulers.computation())
 
 fun <T> Single<T>.observeOnMainThread() =
     this.observeOn(AndroidSchedulers.mainThread())
@@ -24,7 +24,7 @@ fun <T> Single<T>.subscribeOnIO() =
     this.subscribeOn(Schedulers.io())
 
 fun <T> Single<T>.subscribeOnComputation() =
-    this.observeOn(Schedulers.io())
+    this.subscribeOn(Schedulers.io())
 
 fun Completable.observeOnMainThread() =
     this.observeOn(AndroidSchedulers.mainThread())
@@ -33,10 +33,13 @@ fun Completable.subscribeOnIO() =
     this.subscribeOn(Schedulers.io())
 
 fun Completable.subscribeOnComputation() =
-    this.observeOn(Schedulers.io())
+    this.subscribeOn(Schedulers.io())
 
 fun <T> Flowable<T>.subscribeOnIO() =
     this.subscribeOn(Schedulers.io())
+
+fun <T> Flowable<T>.subscribeOnComputation() =
+    this.subscribeOn(Schedulers.computation())
 
 fun <T> Flowable<T>.observeOnMainThread() =
     this.observeOn(AndroidSchedulers.mainThread())

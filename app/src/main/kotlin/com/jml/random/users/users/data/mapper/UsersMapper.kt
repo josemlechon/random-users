@@ -1,10 +1,12 @@
 package com.jml.random.users.users.data.mapper
 
-import com.jml.random.users.users.data.model.db.UserEntity
-import com.jml.random.users.users.data.model.db.UserLocationEntity
-import com.jml.random.users.users.data.model.db.UserNameEntity
-import com.jml.random.users.users.data.model.db.UserPhotoEntity
+import com.jml.random.users.users.data.model.db.user.UserEntity
+import com.jml.random.users.users.data.model.db.user.UserLocationEntity
+import com.jml.random.users.users.data.model.db.user.UserNameEntity
+import com.jml.random.users.users.data.model.db.user.UserPhotoEntity
 import com.jml.random.users.users.data.model.response.*
+import com.jml.random.users.users.domain.model.User
+import com.jml.random.users.users.domain.model.UserPhotos
 
 object UsersMapper {
 
@@ -43,9 +45,35 @@ object UsersMapper {
 
     private fun mapFromPhotoResponseToEntity(res: PhotoResponse): UserPhotoEntity {
         return UserPhotoEntity(
-            large = res.large,
-            medium = res.medium,
-            thumbnail = res.thumbnail
+            large = res.large ?: "",
+            medium = res.medium ?: "",
+            thumbnail = res.thumbnail ?: ""
+        )
+    }
+
+    fun mapFromUsersEntityToModel(entity: List<UserEntity>): List<User> {
+        return entity.map(::mapFromUserEntityToModel)
+    }
+
+    fun mapFromUserEntityToModel(entity: UserEntity): User {
+
+        return User(
+            id = entity.uuid,
+            titleName = entity.name.title,
+            firstName = entity.name.first,
+            lastName = entity.name.last,
+            email = entity.email,
+            phone = entity.phone,
+            pictures = mapFromPhotoEntityToModel(entity.photo)
+        )
+    }
+
+
+    private fun mapFromPhotoEntityToModel(entity: UserPhotoEntity): UserPhotos {
+        return UserPhotos(
+            large = entity.large,
+            medium = entity.medium,
+            thumbnail = entity.thumbnail
         )
     }
 }

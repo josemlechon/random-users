@@ -17,8 +17,8 @@ object Versions {
 
     object Network {
         const val GSON = "2.8.2"
-        const val RETROFIT = "2.4.0"
-        const val OKHTTP = "3.10.0"
+        const val RETROFIT = "2.5.0"
+        const val OKHTTP = "3.12.0"
     }
 
     object ViewModel {
@@ -32,8 +32,8 @@ object Versions {
     }
 
     object Persistence {
-        const val ROOM = "2.1.0-alpha03"
-        const val PAGINATION = "2.1.0-rc01"
+        const val ROOM = "2.1.0-alpha07"
+        const val PAGINATION = "2.1.0"
     }
 
     object DI {
@@ -52,7 +52,7 @@ object Versions {
     }
 
     object Utils {
-        const val GLIDE_VERSION = "4.8.0"
+        const val GLIDE_VERSION = "4.9.0"
         const val TIMBER_VERSION = "4.7.1"
         const val DATE_VERSION = "1.2.0"
     }
