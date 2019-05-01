@@ -5,4 +5,6 @@
     <string name="home_user_no_result_message">Please, restart your search</string>
 
     <string name="home_user_text_search">Filter by name, surname or email</string>
+
+    <string name="home_user_delete_error">Error deleting an user</string>
 </resources>

@@ -1,9 +1,6 @@
 package com.jml.random.users.users.data.mapper
 
-import com.jml.random.users.users.data.model.db.user.UserEntity
-import com.jml.random.users.users.data.model.db.user.UserLocationEntity
-import com.jml.random.users.users.data.model.db.user.UserNameEntity
-import com.jml.random.users.users.data.model.db.user.UserPhotoEntity
+import com.jml.random.users.users.data.model.db.user.*
 import com.jml.random.users.users.data.model.response.*
 import com.jml.random.users.users.domain.model.User
 import com.jml.random.users.users.domain.model.UserPhotos
@@ -74,6 +71,13 @@ object UsersMapper {
             large = entity.large,
             medium = entity.medium,
             thumbnail = entity.thumbnail
+        )
+    }
+
+     fun mapFromUserEntityToDeleteEntity(entity: UserEntity): DeletedUserEntity {
+        return DeletedUserEntity(
+            uuid = entity.uuid,
+            username = entity.username
         )
     }
 }

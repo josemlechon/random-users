@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.item_home_user.view.*
 class HomeUsersAdapter : BaseRecyclerAdapter<HomeUsersAdapter.ViewHolder, UserBriefUI>() {
 
     var doOnItemClick: ((position: Int, id: String) -> Unit)? = null
+    var doDeleteUserClick: ((position: Int, id: String) -> Unit)? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.item_home_user))
@@ -29,6 +31,7 @@ class HomeUsersAdapter : BaseRecyclerAdapter<HomeUsersAdapter.ViewHolder, UserBr
 
                 home_user_head_image.loadCircleFromUrl(item.picture)
 
+                home_user_delete.setClickListener(::onDeleteItemClicked)
                 setClickListener(::onItemClick)
             }
         }
@@ -37,8 +40,18 @@ class HomeUsersAdapter : BaseRecyclerAdapter<HomeUsersAdapter.ViewHolder, UserBr
             getItem(adapterPosition)
                 ?.takeIf { doOnItemClick != null }
                 ?.let {
-                    doOnItemClick!!.invoke(adapterPosition, it.id)
+                    doOnItemClick?.invoke(adapterPosition, it.id)
+                }
+        }
+
+        private fun onDeleteItemClicked() {
+            getItem(adapterPosition)
+                ?.takeIf { doDeleteUserClick != null }
+                ?.let {
+                    doDeleteUserClick?.invoke(adapterPosition, it.id)
                 }
         }
     }
+
+
 }
