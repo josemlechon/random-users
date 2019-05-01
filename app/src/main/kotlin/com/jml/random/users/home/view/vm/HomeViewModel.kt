@@ -8,17 +8,21 @@ import com.jml.random.users.common.extensions.log
 import com.jml.random.users.common.extensions.logError
 import com.jml.random.users.common.extensions.observeOnMainThread
 import com.jml.random.users.common.view.vm.BaseViewModel
+import com.jml.random.users.common.view.vm.state.EventState
+import com.jml.random.users.home.domain.DeleteUser
 import com.jml.random.users.home.domain.FilterUsers
 import com.jml.random.users.home.domain.GetMoreUsers
 import com.jml.random.users.home.view.vm.state.HomeState
 import com.jml.random.users.home.domain.GetUsers
 import com.jml.random.users.home.view.model.UserBriefUI
+import es.lacaixa.voluntariado.android.core.common.vm.SingleLiveEvent
 import io.reactivex.rxkotlin.subscribeBy
 
 class HomeViewModel(
     private val getUsers: GetUsers,
     private val getMoreUsers: GetMoreUsers,
-    private val filterUsers: FilterUsers
+    private val filterUsers: FilterUsers,
+    private val deleteUser : DeleteUser
 ) : BaseViewModel() {
 
     val pagination: PaginationScroll = PaginationScroll()
@@ -84,7 +88,7 @@ class HomeViewModel(
     fun filterUsers(search: String) {
 
         if (search.isEmpty()) {
-            homeStateLiveData.value = HomeState.Data(listUsers)
+            requestUsers()
             pagination.filtering = false
             return
         }
@@ -98,6 +102,29 @@ class HomeViewModel(
             .subscribeBy {
                 homeStateLiveData.value = HomeState.FilteredData(search, it)
             }.also(::addDisposable)
+    }
+
+    fun deleteUser(id: String): SingleLiveEvent<EventState> {
+
+        val event: SingleLiveEvent<EventState> = SingleLiveEvent()
+
+        blockScreen()
+
+        deleteUser.execute(id)
+            .observeOnMainThread()
+            .doFinally { blockScreen(false) }
+            .subscribeBy(
+                onComplete = {
+                    event.value = EventState.Success
+                },
+                onError = { error ->
+                    logError(error = error)
+                    event.value = EventState.Error(error.getType())
+
+                }
+            ).also(::addDisposable)
+
+        return event
     }
 
 

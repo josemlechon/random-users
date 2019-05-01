@@ -53,6 +53,19 @@
                 style="@style/Label.Section"
         />
 
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/home_user_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/home_user_phone_text"
+                app:layout_constraintStart_toStartOf="@id/home_user_start_guide"
+                app:layout_constraintEnd_toEndOf="@id/home_user_end_guide"
+                android:layout_marginTop="@dimen/base_between_items"
+                android:text="DELETE"
+                style="@style/Label.Section"
+        />
+
+
         <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/home_user_start_guide"
                 android:layout_width="wrap_content"

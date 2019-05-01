@@ -5,23 +5,24 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 @Entity(tableName = UserEntity.TABLE)
 data class UserEntity(
-    @PrimaryKey
-    @ColumnInfo(name = ID) val uuid: String,
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = KEY_ID) val keyID: Int = 0,
+    @ColumnInfo(name = UUID) val uuid: String,
     @ColumnInfo(name = "username") val username: String,
-    @Embedded val name: UserNameEntity, //@ColumnInfo(name = "name")
+    @Embedded val name: UserNameEntity,
     @ColumnInfo(name = "email") val email: String,
     @ColumnInfo(name = "phone") val phone: String,
-    @Embedded val photo: UserPhotoEntity, //@ColumnInfo(name = "photos")
-    @ColumnInfo(name = "registered") val registered: String?, //@ColumnInfo(name = "registered")
+    @Embedded val photo: UserPhotoEntity,
+    @ColumnInfo(name = "registered") val registered: String?,
     @ColumnInfo(name = "gender") val gender: String,
-    @Embedded val location: UserLocationEntity //@ColumnInfo(name = "location")
+    @Embedded val location: UserLocationEntity
 ) {
 
     companion object {
         const val TABLE = "user"
-        const val ID = "id"
+        const val KEY_ID = "key_id"
+        const val UUID = "uuid"
+        const val FIELD_ID = "$TABLE.$UUID"
     }
 }

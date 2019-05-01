@@ -8,6 +8,7 @@ import com.jml.random.users.common.domain.model.PaginationScroll
 import com.jml.random.users.common.exceptions.ErrorType
 import com.jml.random.users.common.extensions.*
 import com.jml.random.users.common.view.BaseActivity
+import com.jml.random.users.common.view.vm.state.EventState
 import com.jml.random.users.common.view.widget.adapter.PaginationScrollListener
 
 import com.jml.random.users.home.view.vm.HomeViewModel
@@ -41,6 +42,7 @@ class HomeActivity : BaseActivity() {
         home_users_recycler.apply {
             adapter = HomeUsersAdapter().apply {
                 doOnItemClick = (::onItemSelected)
+                doDeleteUserClick = (::onItemDeleted)
             }
             setHasFixedSize(true)
             layoutManager = linearLayout
@@ -79,7 +81,6 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun onFilterUsers(search: String) {
-        toast(search)
         viewModel.filterUsers(search)
     }
 
@@ -115,6 +116,25 @@ class HomeActivity : BaseActivity() {
 
     private fun onItemSelected(position: Int, id: String) {
 
+    }
+
+    private fun onItemDeleted(position: Int, id: String) {
+        observeNonNull(viewModel.deleteUser(id)) {
+
+            if (it == EventState.Success) {
+                removeItemDeleted(position)
+            } else {
+                showErrorDialog(ErrorType.GENERIC, retry = { onItemDeleted(position, id) })
+            }
+        }
+    }
+
+    private fun removeItemDeleted(position: Int) {
+        (home_users_recycler.adapter as HomeUsersAdapter)
+            .apply {
+                removeAt(position)
+                showFilterEmptyMessage(itemCount == 0)
+            }
     }
 
     private fun showErrorGettingData(errorType: ErrorType) {

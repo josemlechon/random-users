@@ -21,7 +21,6 @@ class UserRemoteDataSource constructor(
     }
 
     fun requestUsers(page: Int, results: Int, seed: String): Single<BaseResponse<List<UserResponse>>> {
-
         return usersApi.getUsers(
             page = page,
             results = results,
