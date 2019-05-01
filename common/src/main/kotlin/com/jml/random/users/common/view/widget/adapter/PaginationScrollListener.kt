@@ -16,7 +16,7 @@ abstract class PaginationScrollListener(private val layoutManager: LinearLayoutM
         val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
 
         getPagination()
-            .takeIf { !it.loading && !it.noMorePages }
+            .takeIf { !it.loading && !it.noMorePages && !it.filtering }
             ?.takeIf { (visibleItemCount + firstVisibleItemPosition) >= totalItemCount }
             ?.takeIf { firstVisibleItemPosition >= 0 }
             ?.let { loadMoreItems() }

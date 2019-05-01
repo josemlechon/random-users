@@ -4,5 +4,5 @@
     <string name="home_user_no_result_title">There is no users</string>
     <string name="home_user_no_result_message">Please, restart your search</string>
 
-    <string name="home_user_text_search">Filter by name, phone or email</string>
+    <string name="home_user_text_search">Filter by name, surname or email</string>
 </resources>

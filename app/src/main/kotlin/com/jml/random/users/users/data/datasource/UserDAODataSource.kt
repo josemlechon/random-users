@@ -12,15 +12,16 @@ abstract class UserDAODataSource {
     @Query("SELECT * FROM ${UserEntity.TABLE}")
     abstract fun getAll(): Maybe<List<UserEntity>>
 
+    @Query(
+        "SELECT * FROM ${UserEntity.TABLE} WHERE " +
+                " name_first like \'%\' || :filter || \'%\'  OR " +
+                " name_last like \'%\' || :filter || \'%\'  OR " +
+                " email like \'%\' || :filter || \'%\' "
+    )
+    abstract fun findUsersByFilter(filter: String): Maybe<List<UserEntity>>
+
     @Query("SELECT * FROM ${UserEntity.TABLE} WHERE ${UserEntity.ID}  = :id LIMIT 1")
     abstract fun findUserById(id: String): Maybe<UserEntity>
-
-    @Query("SELECT * FROM ${UserEntity.TABLE} WHERE ${UserEntity.ID}  = :first LIMIT 1")
-    protected abstract fun findById(first: String): Flowable<UserEntity>
-
-    fun getDistinctUserById(id: String): Flowable<UserEntity> {
-        return findById(id).distinctUntilChanged()
-    }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insert(user: UserEntity): Completable

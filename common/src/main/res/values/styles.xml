@@ -30,7 +30,7 @@
 
 
     <style name="EditText.Search">
-        <item name="android:inputType">text</item>
+        <item name="android:inputType">textNoSuggestions|textVisiblePassword</item>
         <item name="android:imeOptions">actionSearch</item>
     </style>
 </resources>

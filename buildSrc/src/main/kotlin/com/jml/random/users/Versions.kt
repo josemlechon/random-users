@@ -17,8 +17,8 @@ object Versions {
 
     object Network {
         const val GSON = "2.8.2"
-        const val RETROFIT = "2.4.0"
-        const val OKHTTP = "3.10.0"
+        const val RETROFIT = "2.5.0"
+        const val OKHTTP = "3.12.0"
     }
 
     object ViewModel {

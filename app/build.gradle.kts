@@ -1,14 +1,13 @@
 import com.jml.random.users.Config
 import com.jml.random.users.Libs
-import com.jml.random.users.Versions
 
 
 //TODO READ https://kotlinlang.org/docs/reference/using-gradle.html
 plugins {
-    id("com.android.application")// version Versions.BUILD_TOOLS_VERSION
-    kotlin("android")// version Versions.KOTLIN
+    id("com.android.application")
+    kotlin("android")
     kotlin("android.extensions")
-    kotlin("kapt")// version Versions.KOTLIN
+    kotlin("kapt")
 }
 
 android {

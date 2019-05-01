@@ -31,12 +31,12 @@ dependencies {
     implementation(Libs.Config.KOTLIN)
     api(Libs.Extensions.KTX)
 
-    api("androidx.recyclerview:recyclerview:1.0.0")
-    api("androidx.cardview:cardview:1.0.0")
+    api(Libs.UI.RECYCLERVIEW)
+    api(Libs.UI.CARDVIEW)
 
-    api("androidx.constraintlayout:constraintlayout:1.1.3")
-    api("com.google.android.material:material:1.0.0")
-    api("androidx.appcompat:appcompat:1.0.2")
+    api(Libs.UI.CONSTRAINTLAYOUT)
+    api(Libs.UI.DESIGN_COMPAT)
+    api(Libs.UI.APPCOMPAT)
 
     //viewmodel
     api(Libs.ViewModel.VIEWMODEL)
@@ -44,12 +44,12 @@ dependencies {
     api(Libs.ViewModel.LIFECYCLE_EXTENSIONS)
 
     //Network
-    api("com.google.code.gson:gson:2.8.2")
-    api("com.squareup.retrofit2:retrofit:2.4.0")
-    api("com.squareup.retrofit2:adapter-rxjava2:2.4.0")
-    api("com.squareup.retrofit2:converter-gson:2.4.0")
-    api("com.squareup.okhttp3:okhttp:3.10.0")
-    api("com.squareup.okhttp3:logging-interceptor:3.10.0")
+    api(Libs.Network.GSON)
+    api(Libs.Network.RETROFIT)
+    api(Libs.Network.RETROFIT_RX_ADAPTER)
+    api(Libs.Network.RETROFIT_GSON_CONVERTER)
+    api(Libs.Network.OKHTTP)
+    api(Libs.Network.OKHHTP_LOGGER)
 
     //DI
     api(Libs.DI.KOIN_ANDROID)
@@ -66,15 +66,9 @@ dependencies {
     api(Libs.Persistence.ROOM)
     api(Libs.Persistence.ROOM_RX)
     kapt(Libs.Persistence.ROOM_KAPT)
-    api(Libs.Persistence.PAGINATION)
-    api(Libs.Persistence.PAGINATION_RX)
 
     //UTILS
-    api (Libs.Utils.GLIDE)
+    api(Libs.Utils.GLIDE)
 
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("com.android.support.test:runner:1.0.2")
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
-
-
+    testImplementation(Libs.Test.JUNIT)
 }

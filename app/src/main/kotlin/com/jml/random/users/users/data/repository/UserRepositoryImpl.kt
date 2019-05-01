@@ -56,14 +56,17 @@ class UserRepositoryImpl(
         )
     }
 
-    override fun getMoreUsers(): Maybe<List<User>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun getUser(id: String): Maybe<User> {
         return userDataBaseDS.findUserById(id)
+            .subscribeOnComputation()
             .map(UsersMapper::mapFromUserEntityToModel)
 
+    }
+
+   override fun getFilterUsers(filter: String): Maybe<List<User>>{
+        return userDataBaseDS.findUsersByFilter(filter)
+            .subscribeOnComputation()
+            .map(UsersMapper::mapFromUsersEntityToModel)
     }
 
 }

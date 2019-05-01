@@ -2,6 +2,7 @@ package com.jml.random.users.di
 
 import androidx.room.Room
 import com.jml.random.users.app.AppDataBase
+import com.jml.random.users.home.domain.FilterUsers
 import com.jml.random.users.home.domain.GetMoreUsers
 import com.jml.random.users.home.view.vm.HomeViewModel
 import com.jml.random.users.users.data.datasource.UserRemoteDataSource
@@ -14,7 +15,7 @@ import org.koin.dsl.module
 
 val appModule = module {
 
-    viewModel { HomeViewModel(get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get()) }
 
     // Room Database
     single { Room.databaseBuilder(get(), AppDataBase::class.java, AppDataBase.DATABASE_NAME).build() }
@@ -22,10 +23,10 @@ val appModule = module {
     single { get<AppDataBase>().pagesDao() }
 }
 
-
 val useCaseModule = module {
     factory { GetUsers(get()) }
     factory { GetMoreUsers(get()) }
+    factory { FilterUsers(get()) }
 }
 
 val repositoryModule = module {
