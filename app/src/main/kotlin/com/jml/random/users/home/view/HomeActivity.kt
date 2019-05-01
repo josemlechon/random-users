@@ -1,6 +1,7 @@
 package com.jml.random.users.home.view
 
 import android.os.Bundle
+import android.text.InputType
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jml.random.users.R
 import com.jml.random.users.common.domain.model.PaginationScroll
@@ -53,8 +54,8 @@ class HomeActivity : BaseActivity() {
             setMessage(getString(R.string.home_user_no_result_message))
         }
 
-
         home_users_search_edit.onChangeDelayed(1000) { onFilterUsers(it) }
+        home_users_search_edit.inputType = InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS;
     }
 
     private fun subscribeObservers() {

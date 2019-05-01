@@ -63,10 +63,14 @@ class UserRepositoryImpl(
 
     }
 
-   override fun getFilterUsers(filter: String): Maybe<List<User>>{
+   override fun getFilterUsers(filter: String): Single<List<User>>{
         return userDataBaseDS.findUsersByFilter(filter)
             .subscribeOnComputation()
             .map(UsersMapper::mapFromUsersEntityToModel)
     }
 
+    override fun deleteUser(id: String): Completable {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    
 }

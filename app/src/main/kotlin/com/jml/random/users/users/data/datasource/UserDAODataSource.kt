@@ -5,6 +5,7 @@ import com.jml.random.users.users.data.model.db.user.UserEntity
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Maybe
+import io.reactivex.Single
 
 @Dao
 abstract class UserDAODataSource {
@@ -18,7 +19,7 @@ abstract class UserDAODataSource {
                 " name_last like \'%\' || :filter || \'%\'  OR " +
                 " email like \'%\' || :filter || \'%\' "
     )
-    abstract fun findUsersByFilter(filter: String): Maybe<List<UserEntity>>
+    abstract fun findUsersByFilter(filter: String): Single<List<UserEntity>>
 
     @Query("SELECT * FROM ${UserEntity.TABLE} WHERE ${UserEntity.ID}  = :id LIMIT 1")
     abstract fun findUserById(id: String): Maybe<UserEntity>

@@ -10,9 +10,8 @@ class FilterUsers constructor(
     private val usersRepo: UserRepository
 ) {
 
-    fun execute(filter: String): Maybe<List<UserBriefUI>> {
+    fun execute(filter: String): Single<List<UserBriefUI>> {
         return usersRepo.getFilterUsers(filter)
-            .filter { it.isNotEmpty() }
             .map(UserUIMapper::mapFromUserToUserUI)
             .onErrorReturn { listOf() }
     }
