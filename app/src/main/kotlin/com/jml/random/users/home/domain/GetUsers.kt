@@ -10,7 +10,10 @@ class GetUsers constructor(
 ) {
 
     fun execute(): Single<List<UserBriefUI>> {
-       return usersRepo.getUsers()
+
+        return usersRepo.getLocalUsers()
+            .filter { it.isNotEmpty() }
+            .switchIfEmpty ( usersRepo.getUsers() )
             .map(UserUIMapper::mapFromUserToUserUI)
     }
 }

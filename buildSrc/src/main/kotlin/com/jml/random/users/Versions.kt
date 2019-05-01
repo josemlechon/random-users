@@ -32,7 +32,7 @@ object Versions {
     }
 
     object Persistence {
-        const val ROOM = "2.0.0"
+        const val ROOM = "2.1.0-alpha07"
         const val PAGINATION = "2.1.0"
     }
 

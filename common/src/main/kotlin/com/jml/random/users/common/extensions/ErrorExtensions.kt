@@ -5,3 +5,7 @@ import com.jml.random.users.common.exceptions.ErrorType
 fun Throwable.getType(): ErrorType {
     return ErrorType.from(this)
 }
+
+fun Throwable.log() {
+    logError(error = this)
+}

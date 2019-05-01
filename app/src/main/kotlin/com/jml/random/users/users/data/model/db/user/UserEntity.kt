@@ -1,4 +1,4 @@
-package com.jml.random.users.users.data.model.db
+package com.jml.random.users.users.data.model.db.user
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded

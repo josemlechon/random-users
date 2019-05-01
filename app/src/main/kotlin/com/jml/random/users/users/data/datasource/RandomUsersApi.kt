@@ -9,6 +9,10 @@ import retrofit2.http.Query
 interface RandomUsersApi {
 
     @GET("/api/")
-    fun getUsers(@Query("page") page: Int, @Query("results") results: Int)
+    fun getUsers(
+        @Query("page") page: Int=0,
+        @Query("results") results: Int,
+        @Query("seed") seed: String=""
+    )
             : Single<BaseResponse<List<UserResponse>>>
 }

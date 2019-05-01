@@ -1,9 +1,9 @@
 package com.jml.random.users.users.data.mapper
 
-import com.jml.random.users.users.data.model.db.UserEntity
-import com.jml.random.users.users.data.model.db.UserLocationEntity
-import com.jml.random.users.users.data.model.db.UserNameEntity
-import com.jml.random.users.users.data.model.db.UserPhotoEntity
+import com.jml.random.users.users.data.model.db.user.UserEntity
+import com.jml.random.users.users.data.model.db.user.UserLocationEntity
+import com.jml.random.users.users.data.model.db.user.UserNameEntity
+import com.jml.random.users.users.data.model.db.user.UserPhotoEntity
 import com.jml.random.users.users.data.model.response.*
 import com.jml.random.users.users.domain.model.User
 import com.jml.random.users.users.domain.model.UserPhotos
@@ -51,31 +51,9 @@ object UsersMapper {
         )
     }
 
-
-    fun mapFromUserResponseToModel(response: List<UserResponse>): List<User> {
-
-        return response.map {
-            User(
-                id = it.login.uuid,
-                titleName = it.name.title,
-                firstName = it.name.first,
-                lastName = it.name.last,
-                email = it.email,
-                phone = it.phone,
-                pictures = mapFromPhotoResponseToModel(it.picture)
-            )
-        }
+    fun mapFromUsersEntityToModel(entity: List<UserEntity>): List<User> {
+        return entity.map(::mapFromUserEntityToModel)
     }
-
-
-    private fun mapFromPhotoResponseToModel(res: PhotoResponse): UserPhotos {
-        return UserPhotos(
-            large = res.large ?: "",
-            medium = res.medium ?: "",
-            thumbnail = res.thumbnail ?: ""
-        )
-    }
-
 
     fun mapFromUserEntityToModel(entity: UserEntity): User {
 
