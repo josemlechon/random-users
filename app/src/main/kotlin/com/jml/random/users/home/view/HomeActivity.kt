@@ -130,7 +130,7 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun showErrorGettingData(errorType: ErrorType) {
-        showErrorDialog(errorType)
+        showErrorDialog(errorType, retry =  viewModel::requestUsers)
     }
 
     private fun showErrorGettingMoreData(errorType: ErrorType) {

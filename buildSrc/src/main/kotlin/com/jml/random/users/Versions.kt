@@ -39,6 +39,7 @@ object Versions {
 
     object DI {
         const val KOIN = "2.0.0-rc-2"
+        const val TEST = "2.0.0-beta-4"
     }
 
     object Rx {
@@ -50,6 +51,7 @@ object Versions {
     object Test {
         const val JUNIT = "4.12"
         const val MOCKITO = "2.18.0"
+        const val MOCKITO_KOTLIN = "2.1.0"
     }
 
     object Utils {

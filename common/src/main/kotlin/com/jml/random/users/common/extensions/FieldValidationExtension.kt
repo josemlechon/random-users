@@ -4,8 +4,6 @@ import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import androidx.viewpager.widget.ViewPager
-import androidx.core.os.HandlerCompat.postDelayed
 import android.os.Looper
 
 
@@ -49,27 +47,6 @@ fun EditText.onChangeDelayed( time: Long = 500,
             workRunnable = Runnable { whenChange?.invoke(s.toString()) }
             handler.postDelayed(workRunnable, time)
 
-        }
-    })
-}
-
-fun ViewPager.onPage(
-    onPageSelected: ((position: Int) -> Unit)? = null,
-    onScrolled: ((position: Int, positionOffset: Float, positionOffsetPixels: Int) -> Unit)? = null,
-    onScrollChange: ((state: Int) -> Unit)? = null
-) {
-
-    this.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-        override fun onPageScrollStateChanged(state: Int) {
-            onScrollChange?.invoke(state)
-        }
-
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            onScrolled?.invoke(position, positionOffset, positionOffsetPixels)
-        }
-
-        override fun onPageSelected(position: Int) {
-            onPageSelected?.invoke(position)
         }
     })
 }

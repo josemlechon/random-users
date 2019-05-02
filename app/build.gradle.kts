@@ -61,5 +61,11 @@ dependencies {
     kapt(Libs.Utils.GLIDE_COMPILER)
 
     testImplementation(Libs.Test.JUNIT)
+    testImplementation(Libs.Test.KOIN)
+    testImplementation(Libs.Test.MOCKITO)
 
+    testImplementation(Libs.Test.MOCKITO_INLINE)
+    testImplementation(Libs.Test.MOCKITO_KOTLIN)
+
+    androidTestImplementation(Libs.Test.MOCKITO_ANDROID)
 }

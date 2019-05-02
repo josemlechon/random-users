@@ -1,4 +1,4 @@
-package com.jml.random.users.home.domain
+package com.jml.random.users.home.domain.usecases
 
 import com.jml.random.users.home.view.mapper.UserUIMapper
 import com.jml.random.users.home.view.model.UserBriefUI
@@ -13,6 +13,6 @@ class GetMoreHomeUsers constructor(
     fun execute(): Maybe<List<UserBriefUI>> {
         return usersRepo.getUsers()
             .filter { it.isNotEmpty() }
-            .map(UserUIMapper::mapFromUserToUserUI)
+            .map(UserUIMapper()::mapFromUserToUserUI)
     }
 }

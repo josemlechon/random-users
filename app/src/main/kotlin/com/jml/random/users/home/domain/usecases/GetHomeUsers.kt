@@ -1,4 +1,4 @@
-package com.jml.random.users.home.domain
+package com.jml.random.users.home.domain.usecases
 
 import com.jml.random.users.home.view.mapper.UserUIMapper
 import com.jml.random.users.home.view.model.UserBriefUI
@@ -13,7 +13,7 @@ class GetHomeUsers constructor(
 
         return usersRepo.getLocalUsers()
             .filter { it.isNotEmpty() }
-            .switchIfEmpty ( usersRepo.getUsers() )
-            .map(UserUIMapper::mapFromUserToUserUI)
+            .switchIfEmpty(usersRepo.getUsers())
+            .map(UserUIMapper()::mapFromUserToUserUI)
     }
 }

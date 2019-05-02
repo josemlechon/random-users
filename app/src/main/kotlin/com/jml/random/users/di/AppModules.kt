@@ -3,13 +3,14 @@ package com.jml.random.users.di
 import androidx.room.Room
 import com.jml.random.users.app.AppDataBase
 import com.jml.random.users.users.domain.usecases.DeleteUser
-import com.jml.random.users.home.domain.FilterHomeUsers
-import com.jml.random.users.home.domain.GetMoreHomeUsers
+
+import com.jml.random.users.home.domain.usecases.GetMoreHomeUsers
+import com.jml.random.users.home.domain.usecases.FilterHomeUsers
 import com.jml.random.users.home.view.vm.HomeViewModel
 import com.jml.random.users.users.data.datasource.UserRemoteDataSource
 import com.jml.random.users.users.domain.repository.UserRepository
 import com.jml.random.users.users.data.repository.UserRepositoryImpl
-import com.jml.random.users.home.domain.GetHomeUsers
+import com.jml.random.users.home.domain.usecases.GetHomeUsers
 import com.jml.random.users.users.domain.usecases.GetUser
 import com.jml.random.users.users.view.vm.UserViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

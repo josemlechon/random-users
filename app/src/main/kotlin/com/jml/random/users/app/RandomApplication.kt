@@ -21,7 +21,6 @@ class RandomApplication : Application() {
 
     private fun startDI() {
 
-        //TODO testing https://insert-koin.io/docs/2.0/documentation/reference/index.html#_checking_your_koin_configuration
         startKoin {
             androidLogger()
             androidContext(this@RandomApplication)

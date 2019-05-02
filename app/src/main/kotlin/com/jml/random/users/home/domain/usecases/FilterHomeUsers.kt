@@ -1,4 +1,4 @@
-package com.jml.random.users.home.domain
+package com.jml.random.users.home.domain.usecases
 
 import com.jml.random.users.home.view.mapper.UserUIMapper
 import com.jml.random.users.home.view.model.UserBriefUI
@@ -12,7 +12,7 @@ class FilterHomeUsers constructor(
 
     fun execute(filter: String): Single<List<UserBriefUI>> {
         return usersRepo.getFilterUsers(filter)
-            .map(UserUIMapper::mapFromUserToUserUI)
+            .map(UserUIMapper()::mapFromUserToUserUI)
             .onErrorReturn { listOf() }
     }
 }
