@@ -39,15 +39,8 @@ class UserActivity : BaseActivity() {
 
 
     private fun initViews() {
-
-        /*
-          - User gender.
-   - User name and surname.
-   - User location: street, city and state.
-   - Registered date.
-   - User email.
-   - User picture.
-         */
+        setToolbarWithBack(user_toolbar)
+        setToolbarTitle(R.string.activity_label_user)
     }
 
     private fun initObservers() {

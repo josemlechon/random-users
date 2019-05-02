@@ -2,8 +2,7 @@ package com.jml.random.users.home.view
 
 import android.os.Bundle
 import android.text.InputType
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jml.random.users.R
 import com.jml.random.users.common.domain.model.PaginationScroll
 import com.jml.random.users.common.exceptions.ErrorType
@@ -33,7 +32,10 @@ class HomeActivity : BaseActivity() {
 
     private fun iniViews() {
 
-        val linearLayout = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
+        setSupportActionBar(home_user_toolbar)
+        setToolbarTitle(R.string.activity_label_home)
+
+        val linearLayout = LinearLayoutManager(this)
 
         val paginationListener = object : PaginationScrollListener(linearLayout) {
             override fun loadMoreItems() = viewModel.getMoreUsers()

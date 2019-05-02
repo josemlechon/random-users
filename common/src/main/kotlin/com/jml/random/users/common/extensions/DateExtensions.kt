@@ -7,7 +7,7 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.temporal.TemporalAdjusters
 
 enum class FormatDates(val pattern: String) {
-    DATE_FULL("yyyy-MM-dd'T'HH:mm:ss"),
+    DATE_FULL("yyyy-MM-dd'T'HH:mm:ss'Z'"), //2007-01-28T17:56:46Z
     YEAR_MONTH_DATE("yyyy-MM-dd"),
     DATE_MONTH_YEAR("dd/MM/yyyy")
 }
@@ -16,7 +16,6 @@ enum class FormatTimes(val pattern: String) {
     DATE_FULL("yyyy-MM-dd'T'HH:mm:ss"),
     TIME("HH:mm")
 }
-
 
 fun String.formattedDate(from: FormatDates, to: FormatDates): String {
 

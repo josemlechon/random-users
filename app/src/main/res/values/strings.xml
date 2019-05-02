@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Random Users</string>
 
+    <string name="activity_label_home">Random</string>
+    <string name="activity_label_user">User</string>
+
     <string name="home_user_no_result_title">There is no users</string>
     <string name="home_user_no_result_message">Please, restart your search</string>
 

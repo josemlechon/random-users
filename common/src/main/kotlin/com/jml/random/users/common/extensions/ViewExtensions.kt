@@ -6,7 +6,6 @@ import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.os.Handler
-import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -17,6 +16,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
@@ -90,90 +90,25 @@ fun Activity.inflateMenu(@MenuRes menuIdRes: Int, menu: Menu?): Boolean {
     return true
 }
 
-fun Context.getColorFromId(@ColorRes colorResId: Int) =
-    ResourcesCompat.getColor(resources, colorResId, null)
-
-fun View.dpToPixels(dp: Int) =
-    dp * resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT
-
-fun Activity.dpToPixels(dp: Int) =
-    dp * resources.displayMetrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT
-
-fun View.pixelsToDp(pixels: Int) =
-    pixels / (resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
-
-fun Fragment.hideKeyboard() {
-    activity?.currentFocus?.let {
-        val imm = activity?.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(it.windowToken, 0)
-    }
-}
-
-fun Activity.hideKeyboard() {
-    currentFocus?.let {
-        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(it.windowToken, 0)
-    }
-}
-
-fun Fragment.showKeyboard() {
-    activity?.let {
-        val imm = it.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0)
-    }
-}
-
 fun ImageView.setDrawable(@DrawableRes drawableRes: Int) {
     setImageDrawable(ContextCompat.getDrawable(context, drawableRes))
 }
 
-fun Activity.setToolbarTitle(@StringRes toolbarTitle: Int) {
-    actionBar?.setTitle(toolbarTitle)
+fun BaseActivity.setToolbarTitle(@StringRes toolbarTitle: Int) {
+    supportActionBar?.setTitle(toolbarTitle)
 }
-
-fun BaseFragment.setToolbarTitle(@StringRes toolbarTitle: Int) {
-    (activity as BaseActivity).actionBar?.setTitle(toolbarTitle)
-}
-
-fun BaseFragment.setToolbarTitle(toolbarTitle: String) {
-    (activity as BaseActivity).actionBar?.title = toolbarTitle
-}
-
 /**
  * Sets the Toolbar title and display the navigate back arrow
- * @param toolbarTitle: String
- * @param titleView: TextView
  */
-fun BaseFragment.setToolbarWithBack(toolbarTitle: String, titleView: TextView? = null) {
-    if (activity !is BaseActivity) return
+fun BaseActivity.setToolbarWithBack(toolbar: Toolbar) {
 
-    (activity as BaseActivity).supportActionBar
+    setSupportActionBar(toolbar)
+
+    supportActionBar
         ?.apply {
             setDisplayHomeAsUpEnabled(true)
             setDisplayShowHomeEnabled(true)
-
-            if (titleView != null) {
-                titleView.text = toolbarTitle
-                title = ""
-            } else {
-                title = toolbarTitle
-            }
         }
-}
-
-fun Activity.hasConnectivityStatus(): Boolean {
-    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    val activeNetwork = cm.activeNetworkInfo
-    return null != activeNetwork && activeNetwork.isConnected
-}
-
-fun Fragment.hasConnectivityStatus(context: Context?): Boolean {
-    context?.let {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = cm.activeNetworkInfo
-        return null != activeNetwork && activeNetwork.isConnected
-    }
-    return true
 }
 
 fun View.getString(@StringRes id: Int, vararg formatArgs: Any): String {
