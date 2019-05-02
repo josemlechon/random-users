@@ -3,6 +3,7 @@ package com.jml.random.users.users.data.mapper
 import com.jml.random.users.users.data.model.db.user.*
 import com.jml.random.users.users.data.model.response.*
 import com.jml.random.users.users.domain.model.User
+import com.jml.random.users.users.domain.model.UserLocation
 import com.jml.random.users.users.domain.model.UserPhotos
 
 object UsersMapper {
@@ -61,10 +62,20 @@ object UsersMapper {
             lastName = entity.name.last,
             email = entity.email,
             phone = entity.phone,
-            pictures = mapFromPhotoEntityToModel(entity.photo)
+            pictures = mapFromPhotoEntityToModel(entity.photo),
+            gender = entity.gender,
+            registerDate = entity.registered ?: "unknown",
+            location = mapFromLocationEntityToModel(entity.location)
         )
     }
 
+    private fun mapFromLocationEntityToModel(entity: UserLocationEntity): UserLocation {
+        return UserLocation(
+            street = entity.street,
+            state = entity.state,
+            city = entity.city
+        )
+    }
 
     private fun mapFromPhotoEntityToModel(entity: UserPhotoEntity): UserPhotos {
         return UserPhotos(
@@ -74,7 +85,7 @@ object UsersMapper {
         )
     }
 
-     fun mapFromUserEntityToDeleteEntity(entity: UserEntity): DeletedUserEntity {
+    fun mapFromUserEntityToDeleteEntity(entity: UserEntity): DeletedUserEntity {
         return DeletedUserEntity(
             uuid = entity.uuid,
             username = entity.username

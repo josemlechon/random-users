@@ -7,7 +7,10 @@ data class User(
     val lastName: String,
     val email: String,
     val phone: String,
-    val pictures: UserPhotos
+    val gender: String,
+    val pictures: UserPhotos,
+    val registerDate : String,
+    val location : UserLocation
 ) {
 
     fun getFullName(): String = "$firstName $lastName"

@@ -15,6 +15,8 @@ object Libs {
         const val CONSTRAINTLAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.UI.CONSTRAINT}"
         const val DESIGN_COMPAT = "com.google.android.material:material:${Versions.UI.DESIGN}"
         const val APPCOMPAT = "androidx.appcompat:appcompat:${Versions.UI.APPCOMPAT}"
+        const val GRIDLAYOUT = "androidx.gridlayout:gridlayout:${Versions.UI.GRIDLAYOUT}"
+
     }
 
     object ViewModel {

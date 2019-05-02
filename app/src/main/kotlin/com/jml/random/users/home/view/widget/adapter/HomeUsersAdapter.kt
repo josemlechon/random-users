@@ -25,13 +25,13 @@ class HomeUsersAdapter : BaseRecyclerAdapter<HomeUsersAdapter.ViewHolder, UserBr
         override fun bind(item: UserBriefUI) {
 
             itemView.apply {
-                home_user_full_name_image.text = item.fullName.capitalize()
+                home_user_full_name_text.text = item.fullName.capitalize()
                 home_user_email_text.text = item.email
                 home_user_phone_text.text = item.phone
 
                 home_user_head_image.loadCircleFromUrl(item.picture)
 
-                home_user_delete.setClickListener(::onDeleteItemClicked)
+                home_user_delete_button.setClickListener(::onDeleteItemClicked)
                 setClickListener(::onItemClick)
             }
         }

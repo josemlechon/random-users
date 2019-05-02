@@ -188,7 +188,7 @@ fun TextView.setString(@StringRes id: Int, vararg formatArgs: Any?) {
  * Load an url image into the ImageView
  */
 
-fun ImageView.loadCircleFromUrl(url: String, crop: Boolean = false, @DrawableRes pinHolder: Int? = null) {
+fun ImageView.loadCircleFromUrl(url: String, @DrawableRes pinHolder: Int? = null) {
     url.let {
         val requestCreator = Glide.with(this).load(url)
 
@@ -198,7 +198,7 @@ fun ImageView.loadCircleFromUrl(url: String, crop: Boolean = false, @DrawableRes
                 .error(it)
         }
 
-        if (crop) requestCreator.circleCrop()
+        requestCreator.circleCrop()
 
         requestCreator.into(this)
     }

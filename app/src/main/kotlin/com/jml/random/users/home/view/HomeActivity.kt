@@ -2,7 +2,8 @@ package com.jml.random.users.home.view
 
 import android.os.Bundle
 import android.text.InputType
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jml.random.users.R
 import com.jml.random.users.common.domain.model.PaginationScroll
 import com.jml.random.users.common.exceptions.ErrorType
@@ -10,11 +11,11 @@ import com.jml.random.users.common.extensions.*
 import com.jml.random.users.common.view.BaseActivity
 import com.jml.random.users.common.view.vm.state.EventState
 import com.jml.random.users.common.view.widget.adapter.PaginationScrollListener
-
+import com.jml.random.users.home.view.model.UserBriefUI
 import com.jml.random.users.home.view.vm.HomeViewModel
 import com.jml.random.users.home.view.vm.state.HomeState
-import com.jml.random.users.home.view.model.UserBriefUI
 import com.jml.random.users.home.view.widget.adapter.HomeUsersAdapter
+import com.jml.random.users.users.view.UserActivity
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,7 +33,7 @@ class HomeActivity : BaseActivity() {
 
     private fun iniViews() {
 
-        val linearLayout = LinearLayoutManager(this)
+        val linearLayout = GridLayoutManager(this, 2, RecyclerView.VERTICAL, false)
 
         val paginationListener = object : PaginationScrollListener(linearLayout) {
             override fun loadMoreItems() = viewModel.getMoreUsers()
@@ -48,8 +49,6 @@ class HomeActivity : BaseActivity() {
             layoutManager = linearLayout
             addOnScrollListener(paginationListener)
         }
-
-        home_users_refresh.setOnRefreshListener(::onRefreshListener)
 
         home_users_no_data_messages.apply {
             setTitle(getString(R.string.home_user_no_result_title))
@@ -73,7 +72,6 @@ class HomeActivity : BaseActivity() {
         when (state) {
             is HomeState.Data -> showUsersData(state.users)
             is HomeState.AddData -> showMoreUsersData(state.users)
-            is HomeState.RefreshUsers -> showNewUsersRefreshed(state.users)
             is HomeState.FilteredData -> showFilteredUsers(state.search, state.users)
             is HomeState.Error -> showErrorGettingData(state.errorType)
             is HomeState.ErrorMoreData -> showErrorGettingMoreData(state.errorType)
@@ -92,15 +90,6 @@ class HomeActivity : BaseActivity() {
         showUsersData(users)
     }
 
-    private fun onRefreshListener() {
-        viewModel.refreshUsers()
-    }
-
-    private fun showNewUsersRefreshed(users: List<UserBriefUI>) {
-        home_users_refresh.isRefreshing = false
-        showUsersData(users)
-    }
-
     private fun showUsersData(users: List<UserBriefUI>) {
         showFilterEmptyMessage(users.isEmpty())
         (home_users_recycler.adapter as HomeUsersAdapter).setData(users)
@@ -115,7 +104,8 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun onItemSelected(position: Int, id: String) {
-
+        val intent = UserActivity.createIntent(this, id)
+        startActivity(intent)
     }
 
     private fun onItemDeleted(position: Int, id: String) {

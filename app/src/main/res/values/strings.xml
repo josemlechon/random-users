@@ -7,4 +7,13 @@
     <string name="home_user_text_search">Filter by name, surname or email</string>
 
     <string name="home_user_delete_error">Error deleting an user</string>
+    <string name="home_user_text_delete">DELETE</string>
+
+
+    <string name="user_full_name_label">Name: </string>
+    <string name="user_address_label">Address:</string>
+    <string name="user_gender_label">Gender:</string>
+    <string name="user_email_label">email:</string>
+    <string name="user_register_label">Register:</string>
+
 </resources>

@@ -6,7 +6,7 @@ import com.jml.random.users.users.domain.repository.UserRepository
 import io.reactivex.Maybe
 import io.reactivex.Single
 
-class FilterUsers constructor(
+class FilterHomeUsers constructor(
     private val usersRepo: UserRepository
 ) {
 

@@ -1,6 +1,5 @@
 import com.jml.random.users.Config
 import com.jml.random.users.Libs
-import com.jml.random.users.Versions
 
 plugins {
     id("com.android.library")
@@ -22,6 +21,12 @@ android {
 
     sourceSets["main"].java.srcDir("src/main/kotlin")
     sourceSets["test"].java.srcDir("src/test/kotlin")
+
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -33,7 +38,7 @@ dependencies {
 
     api(Libs.UI.RECYCLERVIEW)
     api(Libs.UI.CARDVIEW)
-
+    api(Libs.UI.GRIDLAYOUT)
     api(Libs.UI.CONSTRAINTLAYOUT)
     api(Libs.UI.DESIGN_COMPAT)
     api(Libs.UI.APPCOMPAT)
@@ -69,6 +74,7 @@ dependencies {
 
     //UTILS
     api(Libs.Utils.GLIDE)
+    api(Libs.Utils.DATE)
 
     testImplementation(Libs.Test.JUNIT)
 }

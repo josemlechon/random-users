@@ -25,34 +25,26 @@
             android:paddingEnd="@dimen/base_margin"
             android:elevation="@dimen/base_elevation"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/home_users_refresh"
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/home_users_recycler"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/base_between_items"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_users_search_edit">
-
-        <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_users_recycler"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-        />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            app:layout_constraintTop_toBottomOf="@id/home_users_search_edit"/>
 
 
     <com.jml.random.users.common.view.widget.NoDataMessagesView
             android:id="@+id/home_users_no_data_messages"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="@+id/home_users_refresh"
-            app:layout_constraintTop_toTopOf="@+id/home_users_refresh"
-            app:layout_constraintStart_toStartOf="@+id/home_users_refresh"
-            app:layout_constraintEnd_toEndOf="@+id/home_users_refresh"
+            app:layout_constraintBottom_toBottomOf="@+id/home_users_recycler"
+            app:layout_constraintTop_toTopOf="@+id/home_users_recycler"
+            app:layout_constraintStart_toStartOf="@+id/home_users_recycler"
+            app:layout_constraintEnd_toEndOf="@+id/home_users_recycler"
             android:layout_margin="@dimen/base_margin_x2"/>
-
 
     <include
             android:id="@+id/home_progress"

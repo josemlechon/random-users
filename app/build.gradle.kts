@@ -41,7 +41,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-
     packagingOptions.excludes = mutableSetOf(
         "META-INF/main.kotlin_module",
         "META-INF/LICENSE",
@@ -49,7 +48,6 @@ android {
         "META-INF/NOTICE",
         "META-INF/ASL2.0",
         "META-INF/MANIFEST.MF"
-
     )
 }
 
