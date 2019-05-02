@@ -1,28 +1,25 @@
 package com.jml.random.users.common.extensions
 
 import android.app.Activity
-import android.content.Context
-import android.content.Context.INPUT_METHOD_SERVICE
 import android.graphics.Color
-import android.net.ConnectivityManager
 import android.os.Handler
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.CheckedTextView
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.*
+import androidx.annotation.DrawableRes
+import androidx.annotation.LayoutRes
+import androidx.annotation.MenuRes
+import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.jml.random.users.common.view.BaseActivity
-import com.jml.random.users.common.view.BaseFragment
 
 
 fun Activity.toast(message: CharSequence, duration: Int = Toast.LENGTH_SHORT) {

@@ -68,10 +68,11 @@ object Libs {
 
     object Test {
         const val JUNIT: String = "junit:junit:${Versions.Test.JUNIT}"
-        const val mockito = "org.mockito:mockito-core:${Versions.Test.MOCKITO}"
-        const val mockitoAndroid = "org.mockito:mockito-android:${Versions.Test.MOCKITO}"
-        const val mockitoInline = "org.mockito:mockito-inline:${Versions.Test.MOCKITO}"
-        const val mockitoKotlin = "com.nhaarman:mockito-kotlin:${Versions.Test.MOCKITO}"
-        const val room = "android.arch.persistence.room:testing:${Versions.Persistence.ROOM}"
+        const val MOCKITO = "org.mockito:mockito-core:${Versions.Test.MOCKITO}"
+        const val MOCKITO_ANDROID = "org.mockito:mockito-android:${Versions.Test.MOCKITO}"
+        const val MOCKITO_INLINE = "org.mockito:mockito-inline:${Versions.Test.MOCKITO}"
+        const val MOCKITO_KOTLIN = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.Test.MOCKITO_KOTLIN}"
+        const val ROOM = "android.arch.persistence.room:testing:${Versions.Persistence.ROOM}"
+        const val KOIN = "org.koin:koin-test:${Versions.DI.TEST}"
     }
 }
