@@ -14,7 +14,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserActivity : BaseActivity() {
 
-
     private val viewModel: UserViewModel by viewModel()
 
     companion object {
@@ -37,13 +36,14 @@ class UserActivity : BaseActivity() {
         initObservers()
     }
 
-
     private fun initViews() {
         setToolbarWithBack(user_toolbar)
         setToolbarTitle(R.string.activity_label_user)
     }
 
     private fun initObservers() {
+
+        checkKeyArgument(EXTRA_ID)
 
         val id = intent.getStringExtra(EXTRA_ID)
         viewModel.setUserId(id)
@@ -80,5 +80,4 @@ class UserActivity : BaseActivity() {
         user_register_text.text = user.registerDate.formattedDate(FormatDates.DATE_FULL, FormatDates.DATE_MONTH_YEAR)
 
     }
-
 }

@@ -1,4 +1,4 @@
-package es.lacaixa.voluntariado.android.core.common.vm
+package com.jml.random.users.common.view.vm
 
 import androidx.annotation.MainThread
 import androidx.annotation.Nullable

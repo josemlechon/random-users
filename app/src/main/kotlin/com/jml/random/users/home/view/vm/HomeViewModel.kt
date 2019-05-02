@@ -14,7 +14,7 @@ import com.jml.random.users.home.domain.usecases.GetMoreHomeUsers
 import com.jml.random.users.home.domain.usecases.FilterHomeUsers
 import com.jml.random.users.home.view.vm.state.HomeState
 import com.jml.random.users.home.domain.usecases.GetHomeUsers
-import es.lacaixa.voluntariado.android.core.common.vm.SingleLiveEvent
+import com.jml.random.users.common.view.vm.SingleLiveEvent
 import io.reactivex.rxkotlin.subscribeBy
 
 class HomeViewModel(

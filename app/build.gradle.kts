@@ -2,7 +2,6 @@ import com.jml.random.users.Config
 import com.jml.random.users.Libs
 
 
-//TODO READ https://kotlinlang.org/docs/reference/using-gradle.html
 plugins {
     id("com.android.application")
     kotlin("android")

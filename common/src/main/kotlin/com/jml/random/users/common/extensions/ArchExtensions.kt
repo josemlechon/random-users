@@ -56,25 +56,16 @@ fun <T : Any, L : LiveData<T>> BaseFragment.observeNonNull(liveData: L, body: (T
     liveData.observe(viewLifecycleOwner, Observer { it?.let(body) })
 }
 
-fun BaseActivity.injectMe() {
- //TODO ADD KOIN INJECTION
-}
 
-fun BaseFragment.injectMe() {
-    //TODO ADD KOIN INJECTION
-}
-
-//todo migrate this to Timber
 fun log(message: String) {
-    Log.d("Voluntaris", message)
+    Log.d("Random", message)
 }
 
-//todo migrate this to Timber
 fun logError(message: String? = "", error: Throwable) {
-    Log.e("Voluntaris", message, error)
+    Log.e("Random", message, error)
 }
 
-fun Fragment.checkKeyArgument(key: String) {
+fun BaseFragment.checkKeyArgument(key: String) {
     if (arguments == null || !arguments!!.containsKey(key)) {
         throw RuntimeException("$key  key not passed as parameter")
     }
