@@ -13,6 +13,7 @@ object Versions {
         const val CONSTRAINT = "1.1.3"
         const val DESIGN = "1.0.0"
         const val APPCOMPAT = "1.0.0"
+        const val GRIDLAYOUT = "1.0.0"
     }
 
     object Network {

@@ -4,7 +4,6 @@ import com.jml.random.users.common.exceptions.ErrorType
 import com.jml.random.users.home.view.model.UserBriefUI
 
 sealed class HomeState {
-    class RefreshUsers(val users: List<UserBriefUI>) : HomeState()
     class Data(val users: List<UserBriefUI>) : HomeState()
     class AddData(val users: List<UserBriefUI>) : HomeState()
     class FilteredData(val search: String, val users: List<UserBriefUI>) : HomeState()

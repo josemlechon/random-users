@@ -1,4 +1,4 @@
-package com.jml.random.users.home.domain
+package com.jml.random.users.users.domain.usecases
 
 import com.jml.random.users.users.domain.repository.UserRepository
 import io.reactivex.Completable

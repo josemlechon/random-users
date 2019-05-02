@@ -1,10 +1,22 @@
 <resources>
     <string name="app_name">Random Users</string>
 
+    <string name="activity_label_home">Random</string>
+    <string name="activity_label_user">User</string>
+
     <string name="home_user_no_result_title">There is no users</string>
     <string name="home_user_no_result_message">Please, restart your search</string>
 
     <string name="home_user_text_search">Filter by name, surname or email</string>
 
     <string name="home_user_delete_error">Error deleting an user</string>
+    <string name="home_user_text_delete">DELETE</string>
+
+
+    <string name="user_full_name_label">Name: </string>
+    <string name="user_address_label">Address:</string>
+    <string name="user_gender_label">Gender:</string>
+    <string name="user_email_label">email:</string>
+    <string name="user_register_label">Register:</string>
+
 </resources>

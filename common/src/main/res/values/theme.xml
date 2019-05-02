@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,5 +12,12 @@
     <style name="ProgressBarTheme">
         <item name="android:indeterminate">true</item>
         <item name="android:padding">10dp</item>
+    </style>
+
+
+    <style name="Toolbar">
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="android:background">?attr/colorPrimary</item>
     </style>
 </resources>

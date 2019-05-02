@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class PhotoResponse(
     @SerializedName("large") val large: String?,
     @SerializedName("medium") val medium: String?,
-    @SerializedName("picture") val thumbnail: String?
+    @SerializedName("thumbnail") val thumbnail: String?
 )

@@ -9,27 +9,26 @@ import com.jml.random.users.common.extensions.logError
 import com.jml.random.users.common.extensions.observeOnMainThread
 import com.jml.random.users.common.view.vm.BaseViewModel
 import com.jml.random.users.common.view.vm.state.EventState
-import com.jml.random.users.home.domain.DeleteUser
-import com.jml.random.users.home.domain.FilterUsers
-import com.jml.random.users.home.domain.GetMoreUsers
+import com.jml.random.users.users.domain.usecases.DeleteUser
+import com.jml.random.users.home.domain.FilterHomeUsers
+import com.jml.random.users.home.domain.GetMoreHomeUsers
 import com.jml.random.users.home.view.vm.state.HomeState
-import com.jml.random.users.home.domain.GetUsers
+import com.jml.random.users.home.domain.GetHomeUsers
 import com.jml.random.users.home.view.model.UserBriefUI
 import es.lacaixa.voluntariado.android.core.common.vm.SingleLiveEvent
 import io.reactivex.rxkotlin.subscribeBy
 
 class HomeViewModel(
-    private val getUsers: GetUsers,
-    private val getMoreUsers: GetMoreUsers,
-    private val filterUsers: FilterUsers,
-    private val deleteUser : DeleteUser
+    private val getUsers: GetHomeUsers,
+    private val getMoreUsers: GetMoreHomeUsers,
+    private val filterUsers: FilterHomeUsers,
+    private val deleteUser: DeleteUser
 ) : BaseViewModel() {
 
     val pagination: PaginationScroll = PaginationScroll()
 
     private val homeStateLiveData: MutableLiveData<HomeState> = MutableLiveData()
 
-    private val listUsers: MutableList<UserBriefUI> = mutableListOf()
 
     init {
         requestUsers()
@@ -40,12 +39,6 @@ class HomeViewModel(
 
         getUsers.execute()
             .observeOnMainThread()
-            .map {
-                listUsers.apply {
-                    clear()
-                    addAll(it)
-                }
-            }
             .doFinally { blockScreen(false) }
             .subscribeBy(
                 onSuccess = {
@@ -69,10 +62,9 @@ class HomeViewModel(
                 pagination.loading = false
                 blockScreen(false)
             }
-            .map { listUsers.apply { addAll(it) } }
             .subscribeBy(
                 onSuccess = {
-                    homeStateLiveData.value = HomeState.Data(it)
+                    homeStateLiveData.value = HomeState.AddData(it)
                 },
                 onError = {
                     it.log()
@@ -81,9 +73,6 @@ class HomeViewModel(
             ).also(::addDisposable)
     }
 
-    fun refreshUsers() {
-
-    }
 
     fun filterUsers(search: String) {
 

@@ -1,6 +1,7 @@
 package com.jml.random.users.app
 
 import android.app.Application
+import com.jakewharton.threetenabp.AndroidThreeTen
 import com.jml.random.users.di.appModule
 import com.jml.random.users.di.networkModule
 import com.jml.random.users.di.repositoryModule
@@ -11,11 +12,11 @@ import org.koin.core.context.startKoin
 
 class RandomApplication : Application() {
 
-
     override fun onCreate() {
         super.onCreate()
 
         startDI()
+        startDates()
     }
 
     private fun startDI() {
@@ -31,5 +32,9 @@ class RandomApplication : Application() {
                 networkModule
             )
         }
+    }
+
+    private fun startDates() {
+        AndroidThreeTen.init(this)
     }
 }
