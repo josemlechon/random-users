@@ -3,7 +3,7 @@ package com.jml.random.users.home.view.mapper
 import com.jml.random.users.home.view.model.UserBriefUI
 import com.jml.random.users.users.domain.model.User
 
-object UserUIMapper {
+class UserUIMapper {
 
     fun mapFromUserToUserUI(users: List<User>): List<UserBriefUI> {
         return users.map { user ->

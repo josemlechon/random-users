@@ -9,7 +9,7 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class DeleteUserTest {
+internal class DeleteUserTest {
 
     //mocks
     private val userRepo = mock<UserRepository>()
